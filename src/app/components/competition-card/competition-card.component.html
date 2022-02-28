@@ -1,0 +1,10 @@
+<mat-card [routerLink]="['/competitions', competition?.id]">
+  <mat-card-title-group>
+    <mat-card-title>
+      {{ competition?.name }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ competition?.area?.name }}
+    </mat-card-subtitle>
+  </mat-card-title-group>
+</mat-card>

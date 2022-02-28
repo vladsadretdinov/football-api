@@ -1,0 +1,6 @@
+<mat-grid-list cols="2" rowHeight="200px" gutterSize="15px" cols=3>
+  <mat-grid-tile *ngFor="let competition of competitions">
+    <app-competition-card [competition]="competition">
+    </app-competition-card>
+  </mat-grid-tile>
+</mat-grid-list>
