@@ -5,7 +5,6 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const modifiedReq = req.clone({
       headers: req.headers.set('X-Auth-Token', environment.apiKey),
