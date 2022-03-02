@@ -1,0 +1,57 @@
+<div class="container">
+  <app-breadcrumbs [page]="'Лиги'" [subPage]="subPage"></app-breadcrumbs>
+
+  <h1>Матчи</h1>
+
+  c x по y
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          Дата проведения матча
+        </th>
+        <th>
+          Время
+        </th>
+        <th>
+          Статус матча
+        </th>
+        <th>
+          Хозяева
+        </th>
+        <th>
+          Гости
+        </th>
+        <th>
+          Счет
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let match of competition.matches">
+        <td>
+          {{ match.utcDate  | date: 'dd.MM.yyyy' }}
+        </td>
+        <td>
+          {{ match.utcDate  | date: 'HH:mm'}}
+        </td>
+        <td>
+          {{ match.status | matchStatus }}
+        </td>
+        <td>
+          {{ match.homeTeam.name }}
+        </td>
+        <td>
+          {{ match.awayTeam.name }}
+        </td>
+        <td>
+          <span *ngIf="match.score.fullTime.homeTeam !== null || match.score.fullTime.awayTeam !== null">{{ match.score.fullTime.homeTeam || 0 }}:{{ match.score.fullTime.awayTeam || 0 }}</span>
+          <span class="extratime" *ngIf="match.score.extraTime.homeTeam !== null || match.score.extraTime.awayTeam !== null">({{ match.score.extraTime.homeTeam || 0 }}:{{ match.score.extraTime.awayTeam || 0 }})</span>
+          <span class="penalties" *ngIf="match.score.penalties.homeTeam !== null || match.score.penalties.awayTeam !== null">({{ match.score.penalties.homeTeam || 0 }}:{{ match.score.penalties.awayTeam || 0 }})</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

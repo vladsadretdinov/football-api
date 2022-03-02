@@ -11,4 +11,8 @@ export class ApiService {
   getCompetitions() {
     return this.http.get<any>(environment.apiUrl + 'competitions');
   }
+
+  getCompetitionMatches(id: string) {
+    return this.http.get<any>(environment.apiUrl + `competitions/${id}/matches`);
+  }
 }

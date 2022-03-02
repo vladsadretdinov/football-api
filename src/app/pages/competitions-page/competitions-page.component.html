@@ -1,13 +1,15 @@
-<app-search-field [label]="'Поиск лиги'" [placeholder]="'Введите название лиги'" (searchTextChange)="researchCompetitions($event)"></app-search-field>
+<div class="menu">
+  <app-search-field [label]="'Поиск лиги'" [placeholder]="'Введите название лиги'" (searchTextChange)="researchCompetitions($event)"></app-search-field>
 
-<mat-paginator
-  aria-label="Select page"
-  [length]="competitionsLength"
-  [pageSize]="pageSize"
-  [pageSizeOptions]="pageSizeOptions"
-  [pageIndex]="currentPage"
-  (page)="handlePage($event)">
-</mat-paginator>
+  <mat-paginator
+    aria-label="Select page"
+    [length]="competitionsLength"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="currentPage"
+    (page)="handlePage($event)">
+  </mat-paginator>
+</div>
 
 <mat-grid-list rowHeight="200px" gutterSize="15px" cols="3">
   <mat-grid-tile *ngFor="let competition of filteredCompetitions">

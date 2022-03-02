@@ -1,5 +1,12 @@
 app-search-field {
   margin: 10px;
-  max-width: 300px;
+  max-width: 500px;
   display: block;
+  width: 100%;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

@@ -22,6 +22,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { SearchFieldComponent } from './components/search-field/search-field.component';
 import { FormsModule } from '@angular/forms';
+import { CompetitionCalendarPageComponent } from './pages/competition-calendar-page/competition-calendar-page.component';
+import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
+import { MatchStatusPipe } from './pipes/match-status.pipe';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { FormsModule } from '@angular/forms';
     CompetitionsPageComponent,
     CompetitionCardComponent,
     SearchFieldComponent,
+    CompetitionCalendarPageComponent,
+    BreadcrumbsComponent,
+    MatchStatusPipe,
   ],
   imports: [
     BrowserModule,
