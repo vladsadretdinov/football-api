@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ApiService } from './../../services/api.service';
+import { BreakpointObserver } from '@angular/cdk/layout'
+import { Competition, Competitions } from 'src/app/services/api.interfaces';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-competitions-page',
@@ -8,8 +11,8 @@ import { ApiService } from './../../services/api.service';
   styleUrls: ['./competitions-page.component.scss']
 })
 export class CompetitionsPageComponent implements OnInit {
-  competitions: any[] = [];
-  filteredCompetitions: any[] = [];
+  competitions: Competition[] = [];
+  filteredCompetitions: Competition[] = [];
 
   searchValue: string = "";
 
@@ -17,18 +20,32 @@ export class CompetitionsPageComponent implements OnInit {
   pageSize: number = 9;
   pageSizeOptions: number[] = [9, 18, 27];
   competitionsLength = 0;
+  pageCols: number = 3;
 
-  constructor(private apiService: ApiService) { }
+  constructor(
+    private apiService: ApiService,
+    private breakpointObserver: BreakpointObserver,
+    private _snackBar: MatSnackBar
+  ) {
+    this.breakpointObserver.observe(
+      ['(max-width: 1366px)']
+    ).subscribe((result) => {
+      this.pageCols = result.matches ? 1 : 3;
+    });
+  }
 
   ngOnInit(): void {
     this.apiService.getCompetitions()
       .subscribe(
-        (data) => {
+        (data: Competitions) => {
           this.competitions = data.competitions;
           this.filteredCompetitions = data.competitions;
 
           this.filteredCompetitions = this.filteredCompetitions.slice(this.currentPage, this.pageSize);
           this.competitionsLength = data.competitions.length;
+        },
+        () => {
+          this._snackBar.open("Произошла ошибка", "Закрыть")
         }
       )
   }

@@ -1,5 +1,5 @@
-<div class="container" *ngIf="competition; else elseBlock">
-  <app-breadcrumbs [page]="'Лиги'" [subPage]="subPage"></app-breadcrumbs>
+<div class="container" *ngIf="team; else elseBlock">
+  <app-breadcrumbs [page]="'Команды'" [pageUrl]="'/teams'" [subPage]="subPage"></app-breadcrumbs>
 
   <h1>Матчи</h1>
 
@@ -38,7 +38,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let match of competition.matches">
+        <tr *ngFor="let match of team.matches">
           <td>
             {{ match.utcDate  | date: 'dd.MM.yyyy' }}
           </td>
@@ -67,6 +67,6 @@
 
 <ng-template #elseBlock>
   <div class="container loading-error">
-    <a mat-button routerLink="/" routerLinkActive="active-link">Вернуться к поиску лиги</a>
+    <a mat-button routerLink="/" routerLinkActive="active-link">Вернуться к поиску команды</a>
   </div>
 </ng-template>

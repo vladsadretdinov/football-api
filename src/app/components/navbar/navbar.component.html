@@ -3,9 +3,9 @@
     <span>SoccerStat 2.0</span>
   </a>
   <mat-divider [vertical]="true"></mat-divider>
-  <div>
-    <a mat-button routerLink="/">Лиги</a>
-    <a mat-button routerLink="/teams">Команды</a>
-  </div>
+  <nav>
+    <a mat-button routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Лиги</a>
+    <a mat-button routerLink="/teams" routerLinkActive="active-link">Команды</a>
+  </nav>
 </mat-toolbar>
 

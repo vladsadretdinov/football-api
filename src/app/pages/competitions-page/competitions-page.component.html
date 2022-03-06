@@ -11,7 +11,7 @@
   </mat-paginator>
 </div>
 
-<mat-grid-list rowHeight="200px" gutterSize="15px" cols="3">
+<mat-grid-list rowHeight="200px" gutterSize="15px" [cols]="pageCols">
   <mat-grid-tile *ngFor="let competition of filteredCompetitions">
     <app-competition-card [competition]="competition">
     </app-competition-card>

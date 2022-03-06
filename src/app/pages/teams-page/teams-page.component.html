@@ -1,0 +1,21 @@
+<div class="menu">
+  <app-search-field [label]="'Поиск команды'" [placeholder]="'Введите название команды'" (searchTextChange)="researchTeams($event)"></app-search-field>
+
+  <mat-paginator
+    aria-label="Select page"
+    [length]="teamsLength"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="currentPage"
+    (page)="handlePage($event)">
+  </mat-paginator>
+</div>
+
+<mat-grid-list rowHeight="350px" gutterSize="15px" [cols]="pageCols">
+  <mat-grid-tile *ngFor="let team of filteredTeams">
+    <app-team-card [team]="team">
+    </app-team-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
+

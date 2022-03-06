@@ -1,0 +1,10 @@
+<mat-card [routerLink]="['/teams', team?.id]">
+  <mat-card-title-group>
+    <mat-card-title>
+      {{ team?.name }}
+    </mat-card-title>
+    <div class="img-wrapper">
+      <img [src]="team?.crestUrl" [alt]="team?.shortName" width="70" height="70"/>
+    </div>
+  </mat-card-title-group>
+</mat-card>

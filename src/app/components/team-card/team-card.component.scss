@@ -15,6 +15,7 @@
   height: 100%;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .mat-card-title {
@@ -25,9 +26,8 @@
   margin-bottom: 55px;
 }
 
-.mat-card-subtitle {
-  font-size: 25px;
-  line-height: 30px;
-  margin-bottom: 0;
+.img-wrapper {
+  width: 100%;
+  flex: 1 0 100%;
   text-align: center;
 }

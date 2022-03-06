@@ -11,7 +11,7 @@ enum MatchStatuses {
   CANCELED = "Отменен",
 }
 
-type MatchStatusesKeys = keyof typeof MatchStatuses;
+export type MatchStatusesKeys = keyof typeof MatchStatuses;
 
 @Pipe({
   name: 'matchStatus'

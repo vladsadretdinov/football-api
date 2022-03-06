@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Competition } from 'src/app/services/api.interfaces';
 
 @Component({
   selector: 'app-competition-card',
@@ -6,7 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./competition-card.component.scss']
 })
 export class CompetitionCardComponent implements OnInit {
-  @Input() competition: any;
+  @Input()
+  competition!: Competition;
 
   constructor() { }
 

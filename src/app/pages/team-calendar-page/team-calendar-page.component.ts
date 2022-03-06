@@ -1,18 +1,18 @@
-import { CompetitionMatches } from './../../services/api.interfaces';
-import { ApiService } from './../../services/api.service';
+import { TeamMatches } from './../../services/api.interfaces';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ApiService } from './../../services/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-competition-calendar-page',
-  templateUrl: './competition-calendar-page.component.html',
-  styleUrls: ['./competition-calendar-page.component.scss']
+  selector: 'app-team-calendar-page',
+  templateUrl: './team-calendar-page.component.html',
+  styleUrls: ['./team-calendar-page.component.scss']
 })
-export class CompetitionCalendarPageComponent implements OnInit {
+export class TeamCalendarPageComponent implements OnInit {
 
-  competition!: CompetitionMatches;
+  team!: TeamMatches;
   subPage: string = "";
 
   range = new FormGroup({
@@ -28,16 +28,24 @@ export class CompetitionCalendarPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const competitionId = this.route.snapshot.paramMap.get('id') || '1';
+    const teamId = this.route.snapshot.paramMap.get('id') || '1';
     const startDate = this.route.snapshot.queryParamMap.get('startDate') || undefined;
     const endDate = this.route.snapshot.queryParamMap.get('endDate') || undefined;
 
     this.range.setValue({ start: startDate ? new Date(startDate) : null, end: endDate ? new Date(endDate) : null });
 
-    this.apiService.getCompetitionMatches(competitionId, startDate, endDate).subscribe(
-      (data: CompetitionMatches) => {
-        this.competition = data;
-        this.subPage = this.competition.competition.name;
+    this.apiService.getTeamMatches(teamId, startDate, endDate).subscribe(
+      (data) => {
+        this.team = data;
+      },
+      () => {
+        this._snackBar.open("Произошла ошибка", "Закрыть")
+      }
+    );
+
+    this.apiService.getTeam(teamId).subscribe(
+      (data) => {
+        this.subPage = data.name;
       },
       () => {
         this._snackBar.open("Произошла ошибка", "Закрыть")
@@ -58,9 +66,9 @@ export class CompetitionCalendarPageComponent implements OnInit {
             queryParamsHandling: 'merge',
           });
 
-        this.apiService.getCompetitionMatches(competitionId, startDate, endDate).subscribe(
+        this.apiService.getTeamMatches(teamId, startDate, endDate).subscribe(
           (data) => {
-            this.competition = data;
+            this.team = data;
           },
           () => {
             this._snackBar.open("Произошла ошибка", "Закрыть")
