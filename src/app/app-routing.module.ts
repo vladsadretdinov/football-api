@@ -8,6 +8,11 @@ import { TeamCalendarPageComponent } from './pages/team-calendar-page/team-calen
 const routes: Routes = [
   {
     path: '',
+    redirectTo: '/competitions',
+    pathMatch: 'full'
+  },
+  {
+    path: 'competitions',
     component: CompetitionsPageComponent,
   },
   {
